@@ -63,15 +63,6 @@ const Index = () => {
     setIsPlaying(!isPlaying);
   };
 
-  const handleNext = () => {
-    if (activeTrackIndex !== null && activeTrackIndex < tracks.length - 1) {
-      const nextIndex = activeTrackIndex + 1;
-      setActiveTrackIndex(nextIndex);
-      setIsPlaying(true);
-      // Scroll to next track
-      trackRefs.current[nextIndex]?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <div className="scroll-smooth snap-y snap-mandatory h-screen overflow-y-auto">
@@ -101,7 +92,6 @@ const Index = () => {
         currentTrack={activeTrackIndex !== null ? tracks[activeTrackIndex]?.title : null}
         isPlaying={isPlaying}
         onTogglePlay={() => handleTogglePlay()}
-        onNext={handleNext}
       />
     </div>
   );

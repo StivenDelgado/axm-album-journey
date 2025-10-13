@@ -1,82 +1,48 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, Pause, SkipForward, Volume2, VolumeX } from "lucide-react";
-import { useState } from "react";
+import { Play, Pause } from "lucide-react";
 
 interface MiniPlayerProps {
   currentTrack: string | null;
   isPlaying: boolean;
   onTogglePlay: () => void;
-  onNext: () => void;
 }
 
-const MiniPlayer = ({ currentTrack, isPlaying, onTogglePlay, onNext }: MiniPlayerProps) => {
-  const [isMuted, setIsMuted] = useState(false);
-
+const MiniPlayer = ({ currentTrack, isPlaying, onTogglePlay }: MiniPlayerProps) => {
   return (
     <AnimatePresence>
       {currentTrack && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+        <motion.button
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-lg border-t border-border"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={onTogglePlay}
+          className="fixed bottom-8 right-8 z-50 group"
         >
-          <div className="max-w-7xl mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              {/* Track info */}
-              <div className="flex items-center gap-4 min-w-0 flex-1">
-                <div className="w-12 h-12 bg-primary/20 rounded flex items-center justify-center flex-shrink-0">
-                  <div className="w-8 h-8 border-2 border-primary rounded animate-pulse" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-display font-bold text-foreground truncate">
-                    {currentTrack}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">KREMA - AXM</p>
-                </div>
+          <div className="relative">
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-primary/40 rounded-full blur-xl group-hover:bg-primary/60 transition-all duration-300" />
+            
+            {/* Main button */}
+            <div className="relative flex items-center gap-3 bg-card/95 backdrop-blur-lg border-2 border-primary rounded-full px-6 py-4 shadow-[0_0_30px_rgba(166,20,32,0.4)] hover:shadow-[0_0_40px_rgba(166,20,32,0.6)] transition-all duration-300">
+              {/* Play/Pause icon */}
+              <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                {isPlaying ? (
+                  <Pause className="w-4 h-4 text-foreground" />
+                ) : (
+                  <Play className="w-4 h-4 text-foreground ml-0.5" />
+                )}
               </div>
-
-              {/* Controls */}
-              <div className="flex items-center gap-3">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={onTogglePlay}
-                  className="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:bg-secondary transition-colors duration-300"
-                >
-                  {isPlaying ? (
-                    <Pause className="w-5 h-5 text-foreground" />
-                  ) : (
-                    <Play className="w-5 h-5 text-foreground ml-0.5" />
-                  )}
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={onNext}
-                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-muted/80 transition-colors duration-300"
-                >
-                  <SkipForward className="w-5 h-5 text-foreground" />
-                </motion.button>
-
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setIsMuted(!isMuted)}
-                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-muted/80 transition-colors duration-300 hidden sm:flex"
-                >
-                  {isMuted ? (
-                    <VolumeX className="w-5 h-5 text-foreground" />
-                  ) : (
-                    <Volume2 className="w-5 h-5 text-foreground" />
-                  )}
-                </motion.button>
+              
+              {/* Track name */}
+              <div className="font-display font-bold text-foreground text-sm tracking-wide">
+                {currentTrack}
               </div>
             </div>
           </div>
-        </motion.div>
+        </motion.button>
       )}
     </AnimatePresence>
   );

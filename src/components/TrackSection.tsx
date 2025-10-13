@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Play, Pause } from "lucide-react";
 
 interface TrackSectionProps {
@@ -12,25 +12,29 @@ interface TrackSectionProps {
 }
 
 const TrackSection = ({ title, duration, background, isActive, isPlaying, onTogglePlay }: TrackSectionProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
+    target: containerRef,
+    offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.5, 0.7, 1], [0, 1, 1, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
+  // Parallax effect: move background slower than scroll
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.3]);
+  const contentScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.95]);
 
   return (
-    <section ref={ref} className="relative h-screen w-full flex items-center justify-center overflow-hidden snap-start">
+    <section 
+      ref={containerRef} 
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden snap-start"
+    >
       {/* Parallax background */}
       <motion.div
-        style={{ y }}
-        className="absolute inset-0 z-0"
+        style={{ y: backgroundY }}
+        className="absolute inset-0 z-0 will-change-transform"
       >
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 w-full h-[120%] bg-cover bg-center"
           style={{ backgroundImage: `url(${background})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background/80" />
@@ -38,8 +42,8 @@ const TrackSection = ({ title, duration, background, isActive, isPlaying, onTogg
 
       {/* Content */}
       <motion.div
-        style={{ opacity, scale }}
-        className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+        style={{ opacity: contentOpacity, scale: contentScale }}
+        className="relative z-10 text-center px-4 max-w-4xl mx-auto will-change-transform"
       >
         <motion.div
           initial={false}
