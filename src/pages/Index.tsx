@@ -14,8 +14,6 @@ import axm4Bg from "@/assets/axm-4-bg.jpg";
 const tracks = [
   { title: "ZAFIRO I", duration: "3:21", background: axm1Bg },
   { title: "ZAFIRO II", duration: "4:05", background: axm2Bg },
-  { title: "ZAFIRO III", duration: "2:58", background: axm3Bg },
-  { title: "ZAFIRO IV", duration: "3:47", background: axm4Bg },
 ];
 
 const Index = () => {
