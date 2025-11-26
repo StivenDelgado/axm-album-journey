@@ -10,9 +10,15 @@ const CTASection = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      toast.success("¡Gracias! Te notificaremos del lanzamiento de AXM");
+      toast.success("¡Gracias! Te notificaremos del lanzamiento de ZAFIRO");
       setEmail("");
     }
+  };
+
+  const handlePreSave = () => {
+    // Aquí irá el link de pre-save de Spotify cuando esté disponible
+    window.open("https://spotify.com", "_blank");
+    toast.success("¡Redirigiendo a Spotify para pre-save!");
   };
 
   return (
@@ -27,10 +33,10 @@ const CTASection = () => {
           viewport={{ once: true }}
         >
           <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-foreground">
-            NO TE PIERDAS AXM
+            NO TE PIERDAS ZAFIRO
           </h2>
           <p className="text-xl text-muted-foreground mb-12 font-sans">
-            Suscríbete y sé el primero en escuchar el álbum completo
+            Haz pre-save y sé el primero en escuchar el EP completo
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto flex gap-3">
@@ -44,7 +50,7 @@ const CTASection = () => {
             />
             <Button 
               type="submit"
-              className="bg-primary hover:bg-secondary text-foreground font-display px-8 transition-all duration-300 hover:shadow-[0_0_30px_rgba(166,20,32,0.6)]"
+              className="bg-primary hover:bg-secondary text-primary-foreground font-display px-8 transition-all duration-300 hover:shadow-glow"
             >
               SUSCRIBIR
             </Button>
@@ -59,7 +65,8 @@ const CTASection = () => {
           >
             <Button 
               size="lg"
-              className="bg-primary hover:bg-secondary text-foreground font-display text-lg px-12 py-6 transition-all duration-300 hover:shadow-[0_0_30px_rgba(166,20,32,0.6)]"
+              onClick={handlePreSave}
+              className="bg-primary hover:bg-secondary text-primary-foreground font-display text-lg px-12 py-6 transition-all duration-300 hover:shadow-glow"
             >
               PRE-SAVE EN SPOTIFY
             </Button>
