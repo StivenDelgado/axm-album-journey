@@ -6,12 +6,12 @@ import BehindTheAlbum from "@/components/BehindTheAlbum";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
-import bottegaAudio from "@/audio/BOTEGA MASTER 24 BITS.wav";
-import bubaluAudio from "@/audio/BUBALU - KREMA MASTER 24 BITS.wav";
-import siLaDejoSolaAudio from "@/audio/SI LA DEJO SOLA - KREMA MASTER 24 BITS.wav";
-import rosasAudio from "@/audio/MASTER ROSAS EN LA TINA.wav";
-import victoriaAudio from "@/audio/KREMA, VICTORIA MASTER 24BITS.wav";
-import fiestoAudio from "@/audio/FIESTO - KREMA, TALES MASTER 24 BITS .wav";
+import bottegaAudio from "@/audio/BOTEGA MASTER 24 BITS.mp3";
+import bubaluAudio from "@/audio/BUBALU - KREMA MASTER 24 BITS.mp3";
+import siLaDejoSolaAudio from "@/audio/SI LA DEJO SOLA - KREMA MASTER 24 BITS.mp3";
+import rosasAudio from "@/audio/MASTER ROSAS EN LA TINA.mp3";
+import victoriaAudio from "@/audio/KREMA, VICTORIA MASTER 24BITS.mp3";
+import fiestoAudio from "@/audio/FIESTO - KREMA, TALES MASTER 24 BITS .mp3";
 import oroItalianoAudio from "@/audio/Oro Italiano - Krema.mp3";
 
 const tracks = [
