@@ -22,9 +22,9 @@ const CTASection = () => {
   };
 
   return (
-    <section className="relative py-32 px-4 overflow-hidden">
+    <section className="relative py-32 px-4 overflow-hidden snap-start">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      
+
       <div className="relative max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -48,7 +48,7 @@ const CTASection = () => {
               required
               className="bg-muted/50 border-border text-foreground placeholder:text-muted-foreground font-sans"
             />
-            <Button 
+            <Button
               type="submit"
               className="bg-primary hover:bg-secondary text-primary-foreground font-display px-8 transition-all duration-300 hover:shadow-glow"
             >
@@ -63,7 +63,7 @@ const CTASection = () => {
             viewport={{ once: true }}
             className="mt-12"
           >
-            <Button 
+            <Button
               size="lg"
               onClick={handlePreSave}
               className="bg-primary hover:bg-secondary text-primary-foreground font-display text-lg px-12 py-6 transition-all duration-300 hover:shadow-glow"
