@@ -36,7 +36,7 @@ const CTASection = () => {
             NO TE PIERDAS ZAFIRO
           </h2>
           <p className="text-xl text-muted-foreground mb-12 font-sans">
-            Haz pre-save y sé el primero en escuchar el EP completo
+            Sé el primero en escuchar el EP completo
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto flex gap-3">

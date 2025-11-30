@@ -145,31 +145,6 @@ const Hero = () => {
               ESCUCHAR AHORA
             </a>
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-primary text-foreground hover:bg-primary/10 font-display text-lg px-8 py-6 transition-all duration-300"
-          >
-            PRE-SAVE
-          </Button>
-        </motion.div>
-
-        {/* Countdown */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
-          className="text-sm text-muted-foreground font-sans"
-        >
-          LANZAMIENTO EN
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="font-display text-4xl font-bold text-primary mt-2"
-        >
-          {countdownDisplay}
         </motion.div>
 
         {/* Streaming platforms */}
