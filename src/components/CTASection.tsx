@@ -55,22 +55,6 @@ const CTASection = () => {
               SUSCRIBIR
             </Button>
           </form>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-12"
-          >
-            <Button
-              size="lg"
-              onClick={handlePreSave}
-              className="bg-primary hover:bg-secondary text-primary-foreground font-display text-lg px-12 py-6 transition-all duration-300 hover:shadow-glow"
-            >
-              PRE-SAVE EN SPOTIFY
-            </Button>
-          </motion.div>
         </motion.div>
       </div>
     </section>
